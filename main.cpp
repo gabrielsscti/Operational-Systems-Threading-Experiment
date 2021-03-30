@@ -159,7 +159,7 @@ void *getMatrixPrimeCount(void *args){
         pthread_mutex_unlock(&_mutex);
         count++;
     }
-
+    free(args);
     return NULL;
 }
 
@@ -182,7 +182,7 @@ int getMatrixPrimeCountLinear(int **matrix, Dimensions *dims){
 
 int main(){
     srand(42);
-    Dimensions *matrix_dims = {make_dimensions(5, 4)};
+    Dimensions *matrix_dims = {make_dimensions(16, 12)};
     pthread_t threads[BLOCKS_NUMBER];
 
     _matrix = generateMatrix(matrix_dims);
@@ -198,6 +198,6 @@ int main(){
         pthread_join(threads[i], NULL);
 
     cout << "Numero de primos(thread): " << _primeCount << endl;
-
+    free(_matrix);
     return 0;
 }
