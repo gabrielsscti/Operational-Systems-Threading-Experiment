@@ -198,6 +198,11 @@ int main(){
         pthread_join(threads[i], NULL);
 
     cout << "Numero de primos(thread): " << _primeCount << endl;
+
+    for(int i=0; i<matrix_dims->lines; i++)
+	free(_matrix[i]);
     free(_matrix);
+    free(matrix_dims);
+
     return 0;
 }
