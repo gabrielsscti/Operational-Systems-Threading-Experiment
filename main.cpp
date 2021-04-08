@@ -131,7 +131,7 @@ bool isPrime(int number){
 
     int limit = (int)sqrt(number);
 
-    for(int i=2; i<=limit; i++)
+    for(int i=3; i<=limit; i+=2)
         if(number%i==0)  return false;
 
     return true;
@@ -180,9 +180,10 @@ int getMatrixPrimeCountLinear(int **matrix, Dimensions *dims){
 }
 
 
-int main(){
+int main(int argc, char **argv){
     srand(42);
-    Dimensions *matrix_dims = {make_dimensions(16000, 12000)};
+
+    Dimensions *matrix_dims = {make_dimensions(3600, 3600)};
     pthread_t threads[BLOCKS_NUMBER];
 
     _matrix = generateMatrix(matrix_dims);
@@ -200,7 +201,7 @@ int main(){
     cout << "Numero de primos(thread): " << _primeCount << endl;
 
     for(int i=0; i<matrix_dims->lines; i++)
-	free(_matrix[i]);
+	    free(_matrix[i]);
     free(_matrix);
     free(matrix_dims);
 
