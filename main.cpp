@@ -182,7 +182,7 @@ int getMatrixPrimeCountLinear(int **matrix, Dimensions *dims){
 
 int main(){
     srand(42);
-    Dimensions *matrix_dims = {make_dimensions(16, 12)};
+    Dimensions *matrix_dims = {make_dimensions(16000, 12000)};
     pthread_t threads[BLOCKS_NUMBER];
 
     _matrix = generateMatrix(matrix_dims);
